@@ -7,6 +7,7 @@ import os
 import re
 import threading
 import time
+import hachoir.parser
 
 # Cache to store post data
 post_data_cache = {}
@@ -121,9 +122,11 @@ def clean_filename(filename):
 def download_video(post_data, index, folder_path):
     video_low_url = post_data.get('videoLowURL')
     if not video_low_url:
+        # Show a warning message if video URL is null
         description = post_data.get('description', 'N/A')
         messagebox.showwarning("Warning", f"Video '{description}' has a null video URL. This may happen when the archiving state of Vine was being integrated, and the video URL got cut, or the video is long lost and corrupted since Vine shutdown.")
         return
+
     if video_low_url:
         description = post_data.get('description', 'N/A')
         description_cleaned = clean_filename(description)
@@ -136,6 +139,21 @@ def download_video(post_data, index, folder_path):
                 with open(filepath, 'wb') as file:
                     file.write(response.content)
                 print(f"Video {index} downloaded successfully.")
+
+                # Add created date to the video file's metadata
+                post_created = post_data.get('created')
+                if post_created:
+                    created_datetime = datetime.strptime(post_created, "%Y-%m-%dT%H:%M:%S.%f")
+                    created_timestamp = created_datetime.timestamp()
+
+                    # Use hachoir to update metadata
+                    parser = hachoir.parser.createParser(filepath)
+                    if parser:
+                        metadata = extractMetadata(parser)
+                        if isinstance(metadata, Metadata):
+                            metadata.set('creation_time', created_timestamp)
+                            metadata.save()
+
             else:
                 print(f"Failed to download video {index}. Status code: {response.status_code}")
         except requests.RequestException as e:
