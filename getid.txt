@@ -1,1 +1,11 @@
-t
+How to Get Vine User ID:
+
+To fetch Vine user data, you'll need the user's ID. There are two ways to obtain a Vine user ID:
+
+1. Visit any Vine profile in your web browser.
+2. Open the Developer Tools (Inspect) by pressing F12 or right-clicking and selecting "Inspect".
+3. Click on the Network tab in the Developer Tools.
+4. Refresh the page.
+5. Look for a JSON file that contains a number string, e.g., "906649173665914880". This number string is the Vine user ID. Copy this number string without the ".json" extension.
+
+Once you have the Vine user ID, you can use it to load Vine data in the Vine Data Viewer application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
