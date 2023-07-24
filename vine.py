@@ -6,6 +6,7 @@ import webbrowser
 import os
 import re
 import threading
+import time
 
 # Cache to store post data
 post_data_cache = {}
@@ -57,7 +58,7 @@ def fetch_all_post_data_thread():
         else:
             break
 
-        # Update progress bar and label
+        
         progress_bar["value"] = index
         update_progress_label(index)
 
@@ -65,8 +66,7 @@ def on_right_click(event):
     item = tree.identify('item', event.x, event.y)
     if item:
         column = tree.identify('column', event.x, event.y)
-        if column == '#2':  # Check if the right-click was on the second column (Data)
-            # Show the context menu
+        if column == '#2': 
             context_menu.post(event.x_root, event.y_root)
 
 def open_video_low_url():
@@ -94,7 +94,7 @@ def download_all_vines_thread(folder_path):
             messagebox.showerror("Error", f"Failed to fetch post data for post_id {post_id}")
             break
 
-        # Update progress bar and label
+        
         progress_bar["value"] = index
         update_progress_label(index)
 
