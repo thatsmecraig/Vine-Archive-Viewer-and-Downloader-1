@@ -88,8 +88,8 @@ def download_all_vines_thread(folder_path):
         post_data = load_post_data(post_id)
         if post_data:
             download_video(post_data, index, folder_path)
-            # Add a 5-second delay after each download
-            time.sleep(5)
+            # Add a 2-second delay after each download to prevent a failed download
+            time.sleep(2)
         else:
             messagebox.showerror("Error", f"Failed to fetch post data for post_id {post_id}")
             break
