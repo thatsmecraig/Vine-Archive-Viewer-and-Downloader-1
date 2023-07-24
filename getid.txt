@@ -21,4 +21,4 @@ Please note:
 - Then, click "Load Post Data" and wait for all the post data to load.
 - Once all the post data is loaded, you can click the "Download All Vines" button to download all the user's Vine videos.
 
-The Vine Data Viewer application fetches data from the Vine archive and requires an active internet connection to work properly.
+The Vine Archiver Downloader & Viewer application fetches data from the Vine archive and requires an active internet connection to work properly.
