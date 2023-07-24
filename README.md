@@ -13,7 +13,7 @@ Vine Archive Viewer & Downloader is a Python application that allows you to fetc
 
 1. Clone the repository to your local machine using the following command: `git clone https://github.com/GhostyTongue/Vine-Archive-Viewer-and-Downloader.git`
 
-2. Install the required dependencies: pip install requests
+2. Install the required dependencies: pip install requests hachoir3
 
 
 3. To fetch Vine user data, you'll need the user's ID. If you need help finding a Vine user's ID, refer to the `getid.txt` file in the repository.
@@ -28,6 +28,9 @@ If you need help finding a Vine user's ID, refer to the `getid.txt` file in the 
 ## Contributing
 
 Contributions to Vine Archive Viewer & Downloader are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+
+## Update
+Now it saves the orginal metadata !!
 
 ## License
 
