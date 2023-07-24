@@ -7,7 +7,8 @@ import os
 import re
 import threading
 import time
-import hachoir.parser
+from mutagen.mp4 import MP4
+from mutagen.id3 import ID3, TIT2
 
 # Cache to store post data
 post_data_cache = {}
@@ -144,15 +145,11 @@ def download_video(post_data, index, folder_path):
                 post_created = post_data.get('created')
                 if post_created:
                     created_datetime = datetime.strptime(post_created, "%Y-%m-%dT%H:%M:%S.%f")
-                    created_timestamp = created_datetime.timestamp()
 
-                    # Use hachoir to update metadata
-                    parser = hachoir.parser.createParser(filepath)
-                    if parser:
-                        metadata = extractMetadata(parser)
-                        if isinstance(metadata, Metadata):
-                            metadata.set('creation_time', created_timestamp)
-                            metadata.save()
+                    # Use mutagen to update metadata
+                    audio = MP4(filepath)
+                    audio['\xa9day'] = created_datetime.strftime('%Y-%m-%d')
+                    audio.save()
 
             else:
                 print(f"Failed to download video {index}. Status code: {response.status_code}")
