@@ -83,20 +83,28 @@ def download_all_vines():
     thread = threading.Thread(target=download_all_vines_thread, args=(folder_path,))
     thread.start()
 
-def download_all_vines_thread(folder_path):
+
+def download_all_vines():
+    folder_path = os.path.join(os.getcwd(), username)
+    os.makedirs(folder_path, exist_ok=True)
+    button_download_all['state'] = tk.DISABLED
+
+    delay_after_vines = 80
+    delay_time = 11
+
     for index, post_id in enumerate(post_ids, 1):
         post_data = load_post_data(post_id)
         if post_data:
             download_video(post_data, index, folder_path)
-            # Add a 2-second delay after each download to prevent a failed download
-            time.sleep(2)
         else:
             messagebox.showerror("Error", f"Failed to fetch post data for post_id {post_id}")
             break
 
-        
-        progress_bar["value"] = index
-        update_progress_label(index)
+        # Show a message after every 80 vines
+        if index % delay_after_vines == 0 and index < total_posts:
+            message = f"Downloading paused for {delay_time} seconds to prevent server overload.\nResuming after {delay_time} seconds..."
+            messagebox.showinfo("Download Paused", message)
+            time.sleep(delay_time)
 
     button_download_all['state'] = tk.NORMAL
 
