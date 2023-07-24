@@ -6,7 +6,7 @@ Method 1: Extract from Vine Profile URL
 1. Visit any Vine profile in your web browser.
 2. Look at the URL in the address bar. It should be something like "https://vine.com/u/123456789012345678".
 3. The string of numbers at the end of the URL, in this case, "123456789012345678", is the Vine user ID.
-4. Copy this user ID and use it to load Vine data in the Vine Data Viewer application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
+4. Copy this user ID and use it to load Vine data in the Vine Archiver Viewer & Downloader application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
 
 Method 2: Extract from JSON Response
 1. Open your web browser and go to "https://vine.com".
@@ -14,6 +14,6 @@ Method 2: Extract from JSON Response
 3. In the Developer Tools panel, click on the "Network" tab.
 4. Refresh the page.
 5. Look for a JSON response that contains a string of numbers, for example, "906649173665914880". This string of numbers is the Vine user ID.
-6. Copy this user ID and use it to load Vine data in the Vine Data Viewer application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
+6. Copy this user ID and use it to load Vine data in the Vine Archiver Viewer & Downloader application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
 
 Please note that the Vine Archiver Viewer & Downloader application fetches data from the Vine archive and requires an active internet connection to work properly.
