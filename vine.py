@@ -116,6 +116,10 @@ def clean_filename(filename):
 
 def download_video(post_data, index, folder_path):
     video_low_url = post_data.get('videoLowURL')
+    if not video_low_url:
+        description = post_data.get('description', 'N/A')
+        messagebox.showwarning("Warning", f"Video '{description}' has a null video URL. This may happen when the archiving state of Vine was being integrated, and the video URL got cut, or the video is long lost and corrupted since Vine shutdown.")
+        return
     if video_low_url:
         description = post_data.get('description', 'N/A')
         description_cleaned = clean_filename(description)
