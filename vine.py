@@ -84,8 +84,12 @@ def download_all_vines():
     thread.start()
 
 
+def clean_foldername(foldername):
+    return re.sub(r'[\\/*?:"<>|]', '', foldername)
+
 def download_all_vines():
-    folder_path = os.path.join(os.getcwd(), username)
+    folder_name = clean_foldername(username)
+    folder_path = os.path.join(os.getcwd(), folder_name)
     os.makedirs(folder_path, exist_ok=True)
     button_download_all['state'] = tk.DISABLED
 
