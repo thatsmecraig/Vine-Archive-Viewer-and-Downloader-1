@@ -27,7 +27,7 @@ If you need help finding a Vine user's ID, refer to the `getid.txt` file in the 
 
 ## Contributing
 
-Contributions to Vine Data Viewer are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+Contributions to Vine Archive Viewer & Downloader are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
 
 ## License
 
