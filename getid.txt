@@ -16,4 +16,9 @@ Method 2: Extract from JSON Response
 5. Look for a JSON response that contains a string of numbers, for example, "906649173665914880". This string of numbers is the Vine user ID.
 6. Copy this user ID and use it to load Vine data in the Vine Archiver Viewer & Downloader application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
 
-Please note that the Vine Archiver Viewer & Downloader application fetches data from the Vine archive and requires an active internet connection to work properly.
+Please note:
+- After entering the Vine user ID, click "Load Vine Data" first to fetch the user's Vine profile data.
+- Then, click "Load Post Data" and wait for all the post data to load.
+- Once all the post data is loaded, you can click the "Download All Vines" button to download all the user's Vine videos.
+
+The Vine Data Viewer application fetches data from the Vine archive and requires an active internet connection to work properly.
