@@ -95,8 +95,8 @@ def download_all_vines():
     os.makedirs(folder_path, exist_ok=True)
     button_download_all['state'] = tk.DISABLED
 
-    delay_after_vines = 80
-    delay_time = 11
+    delay_after_vines = 100
+    delay_time = 4
 
     for index, post_id in enumerate(post_ids, 1):
         post_data = load_post_data(post_id)
@@ -106,7 +106,7 @@ def download_all_vines():
             messagebox.showerror("Error", f"Failed to fetch post data for post_id {post_id}")
             break
 
-        # Show a message after every 80 vines
+        # Show a message after every 100 vines
         if index % delay_after_vines == 0 and index < total_posts:
             message = f"Downloading paused for {delay_time} seconds to prevent server overload.\nResuming after {delay_time} seconds..."
             messagebox.showinfo("Download Paused", message)
