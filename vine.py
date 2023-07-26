@@ -243,25 +243,25 @@ def fetch_all_post_data():
 root = tk.Tk()
 root.title("Vine Archiver Viewer & Downloader")
 
-# Vine-themed dark theme colors
-vine_dark_gray = "#55BE96"  # Dark gray background similar to Vine's theme
-vine_accent_color = "#55BE96"  # Vine's specified accent color (#55BE96)
 
-# Customize the main application window background color
+vine_dark_gray = "#55BE96" 
+vine_accent_color = "#55BE96"  
+
+
 root.configure(background=vine_dark_gray)
 
-# Vine-themed dark theme styles for the widgets
-style = ttk.Style()
-style.theme_use('xpnative')  # You can use other themes if you prefer, but 'clam' provides a neutral base for customization
 
-# Change the background color for the TEntry (input field) widget to the accent color
+style = ttk.Style()
+style.theme_use('xpnative') 
+
+
 style.configure('TEntry', background=vine_accent_color)
 
 # Stretch the GUI to fill available space
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
 
-# Create and pack widgets
+
 frame_input = ttk.Frame(root)
 frame_input.grid(row=0, column=0, padx=10, pady=5, sticky="ew")
 
