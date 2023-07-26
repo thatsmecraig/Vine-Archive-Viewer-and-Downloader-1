@@ -243,6 +243,20 @@ def fetch_all_post_data():
 root = tk.Tk()
 root.title("Vine Archiver Viewer & Downloader")
 
+# Vine-themed dark theme colors
+vine_dark_gray = "#55BE96"  # Dark gray background similar to Vine's theme
+vine_accent_color = "#55BE96"  # Vine's specified accent color (#55BE96)
+
+# Customize the main application window background color
+root.configure(background=vine_dark_gray)
+
+# Vine-themed dark theme styles for the widgets
+style = ttk.Style()
+style.theme_use('xpnative')  # You can use other themes if you prefer, but 'clam' provides a neutral base for customization
+
+# Change the background color for the TEntry (input field) widget to the accent color
+style.configure('TEntry', background=vine_accent_color)
+
 # Stretch the GUI to fill available space
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
@@ -272,7 +286,7 @@ context_menu.add_command(label="Open", command=open_video_low_url)
 
 # Bind right-click event to the Treeview
 tree = ttk.Treeview(root, columns=("Property", "Data"), show="headings", height=10)
-tree.heading("Property", text="Property")
+tree.heading("Property", text="Info")
 tree.heading("Data", text="Data")
 tree.bind("<Button-3>", on_right_click)  # Moved the bind here
 tree.grid(row=1, column=0, padx=10, pady=(0, 5), sticky="nsew")
