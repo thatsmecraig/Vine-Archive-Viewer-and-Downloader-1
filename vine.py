@@ -108,7 +108,7 @@ def download_all_vines():
 
         # Show a message after every 100 vines
         if index % delay_after_vines == 0 and index < total_posts:
-            message = f"Downloading paused for {delay_time} seconds to prevent server overload.\nResuming after {delay_time} seconds..."
+            message = f"Downloading paused for {delay_time} seconds to prevent server timeout.\nResuming after {delay_time} seconds..."
             messagebox.showinfo("Download Paused", message)
             time.sleep(delay_time)
 
@@ -125,7 +125,7 @@ def download_video(post_data, index, folder_path):
     if not video_low_url:
         # Show a warning message if video URL is null
         description = post_data.get('description', 'N/A')
-        messagebox.showwarning("Warning", f"Video '{description}' has a null video URL. This may happen when the archiving state of Vine was being integrated, and the video URL got cut, or the video is long lost and corrupted since Vine shutdown.")
+        messagebox.showwarning("Warning", f"Vine: '{description}' has a null video URL. This may happen when the archiving state of Vine was being integrated, and the video URL got cut, or the video is long lost and corrupted since Vine shutdown.")
         return
 
     if video_low_url:
