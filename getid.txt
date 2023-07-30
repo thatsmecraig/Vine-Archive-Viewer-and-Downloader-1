@@ -14,7 +14,7 @@ There are two ways to fetch Vine user data:
 3. Right-click on the page and select "Inspect" or "Inspect Element" (depending on your browser).
 4. In the Developer Tools panel, click on the "Network" tab.
 5. Refresh the page.
-6. Look for a JSON response that contains a string of numbers, for example url/file name is, "https://archive.vine.co/profiles/_/962965269670715392.json". This string of numbers is the Vine user ID.
+6. Look for a JSON response that contains a string of numbers, for example url/file, "https://archive.vine.co/profiles/_/962965269670715392.json". This string of numbers is the Vine user ID.
 7. Copy this user ID and use it to load Vine data in the Vine Archiver Viewer & Downloader application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
 
 Please note:
