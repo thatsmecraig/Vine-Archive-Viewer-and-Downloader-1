@@ -4,7 +4,7 @@ There are two ways to fetch Vine user data:
 
 (Basic) Method 1: Extract from Vine Profile URL
 1. Visit any Vine profile in your web browser.
-2. Look at the URL in the address bar. It should be something like "https://vine.com/u/123456789012345678". (If their username is not a number and just a word/name do method 2)
+2. Look at the URL in the address bar. It should be something like "https://vine.com/u/123456789012345678". (If their username is not a number and just their username do method 2)
 3. The string of numbers at the end of the URL, in this case, "123456789012345678", is the Vine user ID. 
 4. Copy this user ID and use it to load Vine data in the Vine Archiver Viewer & Downloader application by clicking the "Load Vine Data" button and entering the Vine user ID when prompted.
 
