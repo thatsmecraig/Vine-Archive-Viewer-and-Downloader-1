@@ -10,7 +10,7 @@ There are two ways to fetch Vine user data:
 
 (Intermediate) Method 2: Extract from JSON Response
 1. Open your web browser and go to "https://vine.co".
-2. Go to any user profile. (You can google Example ("vine.co" jake paul) and it will immediately show the profile or a vine using its username)
+2. Go to any user profile. (You can google it, here is a Example ("vine.co" jake paul) and it will immediately show the profile or a vine using its username)
 3. Right-click on the page and select "Inspect" or "Inspect Element" (depending on your browser).
 4. In the Developer Tools panel, click on the "Network" tab.
 5. Refresh the page.
