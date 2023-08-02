@@ -104,16 +104,19 @@ def download_all_vines():
     delay_after_vines = 100
     delay_time = 4
 
-    num_failed_downloads = 0
+    num_skipped_downloads = 0
+    num_successful_downloads = 0
 
     for index, post_id in enumerate(post_ids, 1):
         post_data = load_post_data(post_id)
         if post_data:
             success = download_video(post_data, index, folder_path)
-            if not success:
-                num_failed_downloads += 1
+            if success:
+                num_successful_downloads += 1
+            else:
+                num_skipped_downloads += 1
         else:
-            num_failed_downloads += 1
+            num_skipped_downloads += 1
             continue
 
         # Show a message after every 100 vines
@@ -123,12 +126,11 @@ def download_all_vines():
             time.sleep(delay_time)
 
     # After all vines are downloaded, write summary information to the log
-    num_successful_downloads = len(post_ids) - num_failed_downloads
     summary_message = (
         f"Download Summary:\n"
         f"Total Vines: {len(post_ids)}\n"
         f"Successful Downloads: {num_successful_downloads}\n"
-        f"Failed Downloads: {num_failed_downloads}"
+        f"Skipped Downloads: {num_skipped_downloads}"
     )
     log_file_path = os.path.join(folder_path, f"{folder_name}.log")
     write_to_log(log_file_path, summary_message)
