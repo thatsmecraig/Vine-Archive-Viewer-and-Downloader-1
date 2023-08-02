@@ -10,9 +10,15 @@ import time
 from mutagen.mp4 import MP4
 from mutagen.id3 import ID3, TIT2
 
+
 # Cache to store post data
 post_data_cache = {}
 post_data_lock = threading.Lock()
+
+# Create and Write to the Log File
+def write_to_log(log_path, message):
+    with open(log_path, "a") as log_file:
+        log_file.write(message + "\n")
 
 def fetch_vine_data():
     global post_ids, total_posts, username, vine_data
@@ -58,9 +64,9 @@ def fetch_all_post_data_thread():
         if post_data is not None:
             display_post_data(post_data)
         else:
-            break
+            # Skip the post and continue to the next one
+            continue
 
-        
         progress_bar["value"] = index
         update_progress_label(index)
 
@@ -98,19 +104,34 @@ def download_all_vines():
     delay_after_vines = 100
     delay_time = 4
 
+    num_failed_downloads = 0
+
     for index, post_id in enumerate(post_ids, 1):
         post_data = load_post_data(post_id)
         if post_data:
-            download_video(post_data, index, folder_path)
+            success = download_video(post_data, index, folder_path)
+            if not success:
+                num_failed_downloads += 1
         else:
-            messagebox.showerror("Error", f"Failed to fetch post data for post_id {post_id}")
-            break
+            num_failed_downloads += 1
+            continue
 
         # Show a message after every 100 vines
         if index % delay_after_vines == 0 and index < total_posts:
             message = f"Downloading paused for {delay_time} seconds to prevent server timeout.\nResuming after {delay_time} seconds..."
             messagebox.showinfo("Download Paused", message)
             time.sleep(delay_time)
+
+    # After all vines are downloaded, write summary information to the log
+    num_successful_downloads = len(post_ids) - num_failed_downloads
+    summary_message = (
+        f"Download Summary:\n"
+        f"Total Vines: {len(post_ids)}\n"
+        f"Successful Downloads: {num_successful_downloads}\n"
+        f"Failed Downloads: {num_failed_downloads}"
+    )
+    log_file_path = os.path.join(folder_path, f"{folder_name}.log")
+    write_to_log(log_file_path, summary_message)
 
     button_download_all['state'] = tk.NORMAL
 
@@ -171,6 +192,9 @@ def load_post_data(post_id):
             with post_data_lock:
                 post_data_cache[post_id] = post_data
             return post_data
+        elif post_response.status_code == 403:
+            print(f"Skipped post_id {post_id} due to 403 Forbidden error.")
+            return None
         else:
             messagebox.showerror("Error", f"Failed to fetch post data. Status code: {post_response.status_code}")
             return None
