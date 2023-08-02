@@ -23,7 +23,7 @@ Vine Archive Viewer & Downloader is a Python application that allows you to fetc
    
 ## How to Get a Vine User ID
 
-If you need help finding a Vine user's ID, refer to the `getid.txt` file in the repository. It provides step-by-step instructions on how to obtain a user's ID.
+If you need help finding a Vine user's ID, refer to the [getid.txt](getid.txt) file in the repository. It provides step-by-step instructions on how to obtain a user's ID.
 
 ## Contributing
 
