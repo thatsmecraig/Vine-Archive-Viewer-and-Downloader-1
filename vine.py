@@ -204,6 +204,7 @@ def load_post_data(post_id):
         messagebox.showerror("Error", f"An error occurred while fetching post data: {e}")
         return None
 
+# Create a function to check for updates
 def check_for_updates():
     repo_url = "https://api.github.com/repos/GhostyTongue/Vine-Archive-Viewer-and-Downloader/releases/latest"
     
@@ -213,7 +214,7 @@ def check_for_updates():
             release_info = response.json()
             latest_version = release_info["tag_name"]
             
-            if latest_version != "v1.1":  # Replace with the actual latest version
+            if latest_version != "v1":  # Replace with the actual latest version
                 messagebox.showinfo("Update Available", f"A new version ({latest_version}) is available on GitHub!")
             else:
                 messagebox.showinfo("Up to Date", "You are using the latest version.")
