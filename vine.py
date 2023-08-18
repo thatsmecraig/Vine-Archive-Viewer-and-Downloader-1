@@ -213,9 +213,16 @@ def check_for_updates():
         if response.status_code == 200:
             release_info = response.json()
             latest_version = release_info["tag_name"]
+            release_name = release_info["name"]
+            release_date = release_info["published_at"]
             
-            if latest_version != "v1":  # Replace with the actual latest version
-                messagebox.showinfo("Update Available", f"A new version ({latest_version}) is available on GitHub!")
+            current_version = "v1.0.0"  # Replace with your current version
+            
+            if latest_version != current_version:
+                message = f"A new version ({latest_version}) is available on GitHub!\n"
+                message += f"Release Name: {release_name}\n"
+                message += f"Release Date: {release_date}"
+                messagebox.showinfo("Update Available", message)
             else:
                 messagebox.showinfo("Up to Date", "You are using the latest version.")
         else:
