@@ -204,32 +204,6 @@ def load_post_data(post_id):
         messagebox.showerror("Error", f"An error occurred while fetching post data: {e}")
         return None
 
-# Create a function to check for updates
-def check_for_updates():
-    repo_url = "https://api.github.com/repos/GhostyTongue/Vine-Archive-Viewer-and-Downloader/releases/latest"
-    
-    try:
-        response = requests.get(repo_url)
-        if response.status_code == 200:
-            release_info = response.json()
-            latest_version = release_info["tag_name"]
-            release_name = release_info["name"]
-            release_date = release_info["published_at"]
-            
-            current_version = "v1.0.0"  # Replace with your current version
-            
-            if latest_version != current_version:
-                message = f"A new version ({latest_version}) is available on GitHub!\n"
-                message += f"Release Name: {release_name}\n"
-                message += f"Release Date: {release_date}"
-                messagebox.showinfo("Update Available", message)
-            else:
-                messagebox.showinfo("Up to Date", "You are using the latest version.")
-        else:
-            messagebox.showwarning("Warning", "Failed to fetch release information.")
-    except requests.RequestException:
-        messagebox.showerror("Error", "An error occurred while checking for updates.")
-
 def display_vine_data(vine_data):
     tree.delete(*tree.get_children())
 
@@ -350,10 +324,6 @@ progress_bar.grid(row=2, column=0, pady=(0, 10), sticky="ew")
 # Create Progress Label
 progress_label = ttk.Label(root, text="0/0 Loaded Post")
 progress_label.grid(row=3, column=0)
-
-    # Add "Check for Updates" button
-    button_check_updates = ttk.Button(frame_input, text="Check for Updates", command=check_for_updates)
-    button_check_updates.grid(row=0, column=5, padx=5, sticky="ew")
 
 # Initialize post_ids and total_posts variables
 post_ids = []
