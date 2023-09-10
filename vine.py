@@ -26,7 +26,7 @@ def fetch_vine_data():
     user_id = entry_user_id.get()
 
     if not user_id:
-        messagebox.showwarning("Warning", "Please enter a Vine user ID.")
+        messagebox.showwarning("Warning", "928514065121300480")
         return
 
     url = f"https://archive.vine.co/profiles/_/{user_id}.json"
